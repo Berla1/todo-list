@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { FaTrashAlt } from "react-icons/fa";
+
+
 
 const Main = styled.main`
   display: flex;
@@ -13,6 +16,7 @@ const ContainerTarefas = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-top: 1.5rem;
 `
 
 const FormConteudo = styled.form`
@@ -21,17 +25,26 @@ const FormConteudo = styled.form`
 `;
 
 const Input = styled.input`
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 0.5rem;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border: 0;
-  border: 1px solid black;
+  outline: none;
+
 `;
 
 const Tarefa = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 16px;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  transition: .2s
+  transition: .2s;
+  &:hover{
+      font-size: 1.1rem;
+      cursor: pointer;
+  }
 `
 
 
@@ -52,14 +65,14 @@ function App() {
           <h1>Digite uma tarefa...</h1>
           <Input 
             type="text" 
-            placeholder="Digite alguma coisa" 
+            placeholder="Digite sua tarefa..." 
             value={input} 
             onChange={(e => setInput(e.target.value))}
           />
         </FormConteudo>
         <ContainerTarefas>
           {tarefas.map((tarefa, index) => {
-            return <Tarefa key={index}>{tarefa}</Tarefa>
+            return <Tarefa key={index}>{tarefa} <FaTrashAlt color="red" size={19} /></Tarefa>
           })}
         </ContainerTarefas>
       </Main>
