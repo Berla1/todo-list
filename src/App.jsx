@@ -72,7 +72,8 @@ function App() {
         </FormConteudo>
         <ContainerTarefas>
           {tarefas.map((tarefa, index) => {
-            return <Tarefa key={index}>{tarefa} <FaTrashAlt color="red" size={19} /></Tarefa>
+            return <Tarefa key={index}>{tarefa} </Tarefa>
+            // <FaTrashAlt color="red" size={19} />
           })}
         </ContainerTarefas>
       </Main>
