@@ -5,19 +5,6 @@ import MainContainer from "./components/MainContainer";
 import ContainerTarefas from "./components/ContainerTarefas";
 import FormTarefas from "./components/FormTarefas";
 
-const FormConteudo = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 0.5rem;
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border: 0;
-  outline: none;
-`;
 
 const Tarefa = styled.p`
   display: flex;
