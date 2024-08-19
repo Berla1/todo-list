@@ -1,21 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-`;
-
-const ContainerTarefas = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 1.5rem;
-`;
+import MainContainer from "./components/MainContainer";
+import ContainerTarefas from "./components/ContainerTarefas";
+import FormTarefas from "./components/FormTarefas";
 
 const FormConteudo = styled.form`
   display: flex;
@@ -46,14 +34,11 @@ const Tarefa = styled.p`
 `;
 
 function App() {
-  const [input, setInput] = useState("");
   const [tarefas, setTarefas] = useState([]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function addTarefa(input) {
     const novaTarefa = { input: input, id: Date.now().toString()};
     setTarefas((prevTarefa) => [...prevTarefa, novaTarefa]);
-    setInput("");
   }
 
   function deleteTask(id) {
@@ -62,16 +47,10 @@ function App() {
 
   return (
     <>
-      <Main>
-        <FormConteudo onSubmit={handleSubmit}>
-          <h1>Digite uma tarefa...</h1>
-          <Input
-            type="text"
-            placeholder="Digite sua tarefa..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </FormConteudo>
+      <MainContainer>
+        <FormTarefas onAddTarefa={addTarefa}>
+          <h1>Digite uma tarefa!</h1>
+        </FormTarefas>
         <ContainerTarefas>
           {tarefas.map((tarefa, index) => {
             return (
@@ -83,7 +62,7 @@ function App() {
 
           })}
         </ContainerTarefas>
-      </Main>
+      </MainContainer>
     </>
   );
 }
